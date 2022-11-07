@@ -38,7 +38,7 @@ public class sr_puesto extends HttpServlet {
             out.println("<title>Servlet sr_puesto</title>");            
             out.println("</head>");
             out.println("<body>");
-            puesto = new Puesto(request.getParameter("txt_puesto"),Integer.valueOf(request.getParameter("txt_idpuesto")));
+            puesto = new Puesto(request.getParameter("txt_pue"),Integer.valueOf(request.getParameter("txt_id_pue")));
             //Agregar
             if("agregar".equals(request.getParameter("btn_agregar"))){
             if(puesto.crear()>0){
@@ -46,7 +46,7 @@ public class sr_puesto extends HttpServlet {
            
            out.println("<a href='puesto.jsp'>Ir a Puestos...</a>");
            out.println("<br>");
-           out.println("<a href='empleado.jsp'>Ir a Empleados</a>");
+           out.println("<a href='puesto.jsp'>Ir a Empleados</a>");
            out.println("<h1> Eliga a que Formulario desea ir.</h1>");
             }else{
                 out.println("<h1> XXXXX Error XXXXX</h1>");

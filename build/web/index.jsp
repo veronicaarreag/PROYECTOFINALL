@@ -128,14 +128,13 @@
     <a class="py-2 d-none d-md-inline-block" href="login.jsp">Compras</a>
     
   </div>
-            
 </nav>
 
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
   <div class="col-md-5 p-lg-5 mx-auto my-5">
     <h1 class="display-4 font-weight-normal">Servicio de ventas</h1>
-    <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-    <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+    <p class="lead font-weight-normal">Los mejores productos del mercado</p>
+    <a class="btn btn-outline-secondary" href="#">Revisar productos</a>
   </div>
   <div class="product-device shadow-sm d-none d-md-block"></div>
   <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
@@ -183,13 +182,13 @@
   <div class="row">
     <div class="col-12 col-md">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24" focusable="false"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-      <small class="d-block mb-3 text-muted">&copy; 2021-2022 Grupo#6 </small>
+      <small class="d-block mb-3 text-muted">&copy; 2021-2022 Grupo#8 </small>
     </div>
     <div class="col-6 col-md">
       <h5>Integrantes</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">Integrante #1</a></li>
-        <li><a class="text-muted" href="#">Integrante #2</a></li>
+        <li><a class="text-muted" href="#">Beronica Arrega</a></li>
+        <li><a class="text-muted" href="#">Gustavo Adolfo Hernandez</a></li>
         
       </ul>
     </div>

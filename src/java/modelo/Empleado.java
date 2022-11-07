@@ -85,8 +85,7 @@ public class Empleado extends Persona{
     public DefaultTableModel leer(){
   DefaultTableModel tabla = new DefaultTableModel();
   try{
-   //SELECT e.idempleado as id,e.nombres,e.apellidos,e.direccion,e.telefono,e.dpi,e.genero,e.fecha_nacimiento,p.puesto,e.idpuesto,e.fecha_inicio_labores,e.fechaingreso FROM empleados as e inner join puestos as p on e.idPuesto = p.idPuesto;
-   //select e.idempleado,e.nombres,e.apellidos,e.direccion,e.telefono,e.dpi, CASE when e.genero = 1 then 'masculino' when e.genero = 0 then 'femenino' end as genero,e.fecha_nacimiento, p.puesto, e.fecha_inicio_labores, e.fechaingreso from empleados as e inner join puestos as p on e.idpuesto=p.idPuesto;   
+   
    cn = new Conexion();
    cn.abrir_con();
     String query;
@@ -175,7 +174,7 @@ public class Empleado extends Persona{
          parametro.setString(3, getDireccion());
          parametro.setString(4, getTelefono());
          parametro.setString(5, getDpi());
-         //parametro.setString(6, getGenero());
+         parametro.setByte(6, getGenero());
          parametro.setString(7, getFecha_nacimiento());
          parametro.setInt(8, this.getId_puesto());
          parametro.setString(9, getFecha_inicio_labores());

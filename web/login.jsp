@@ -3,13 +3,72 @@
     Created on : 23/10/2022, 22:09:03
     Author     : berliz
 --%>
-
+<%@page import="modelo.operaciones"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true" %>
 <!DOCTYPE html>
 <html>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+        .login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.login-logo{
+    position: relative;
+    margin-left: -41.5%;
+}
+.login-logo img{
+    position: absolute;
+    width: 20%;
+    margin-top: 19%;
+    background: #282726;
+    border-radius: 4.5rem;
+    padding: 5%;
+}
+.login-form-1{
+    padding: 9%;
+    background:#282726;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color:#fff;
+}
+.login-form-2{
+    padding: 9%;
+    background: #f05837;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color: #fff;
+}
+.btnSubmit{
+    font-weight: 600;
+    width: 50%;
+    color: #282726;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
+}
+.btnForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btnForgetPwd:hover{
+    text-decoration:none;
+    color:#fff;
+}
+        
+    </style>
         <style>
         
       .bd-placeholder-img {
@@ -105,9 +164,11 @@
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     </head> 
     <body>
 
+        
         <nav class="site-header sticky-top py-1">
             <div class="container d-flex flex-column flex-md-row justify-content-between">
     <a class="py-2" href="index.jsp" aria-label="Product">
@@ -120,27 +181,55 @@
 </nav>
 
         <center>
-        <img src="https://images.vexels.com/media/users/3/259041/isolated/preview/379b5ec6200e87b0ead9c22b731c2527-zapatos-planos-de-bolos.png" heigth=15% width=15%>
-        <div id="contenedor">
+        
+       <div id="contenedor">
             <div id="central">
                 <div id="login">
-                    <div class="titulo">
-                        Bienvenido
-                    </div>
-                        <form action="menu.jsp" id="loginform">
-                        <input type="text" name="txt_usuario" id="txt_usuario" placeholder="Usuario" required>
+                    <br>
+                    
                         
-                        <input type="password" placeholder="Contraseña" id="txt_contraseña" name="txt_contraseña" required>
+                        <div class="col-md-6 login-form-1">
+                            <h3>Bienvenido</h3>
+                            <h3>Login </h3>
+        <form action="login.jsp" method="post">
+           <input type="text" name="txtUsuario" class="form-control" placeholder="Usuario"><br>
+           <input type="password" name="txtContra" class="form-control" placeholder="Contraseña"><br>
+            
+            <input type="submit" name="btnIngresar" value="Ingresar"><br>
+        </form>
+        
+        <%
+          operaciones op = new operaciones();
+          if(request.getParameter("btnIngresar")!=null){
+              String nombre=request.getParameter("txtUsuario");
+              String contra=request.getParameter("txtContra");
+              
+              switch(op.loguear( nombre,contra)){
+               case 1:
+                   HttpSession sesion = request.getSession();
+                   sesion.setAttribute("user", nombre);
+                   sesion.setAttribute("nivel", "1");
+                   response.sendRedirect("menu.jsp");
+                   break;
+               default:
+                   out.write("usuario no existe, o contraseña invalida");
+                   break;
+           }
+              
+          }
+          
+          if(request.getParameter("cerrar")!=null){
+              session.invalidate();
+          }
+          
+          
+        %>
+        
+       
                         
-                        <button type="submit" title="Ingresar" name="Ingresar">Login</button>
+                        
+                        </div>
                     </form>
-                    <div class="pie-form">
-                        <a href="#">¿Perdiste tu contraseña?</a>
-                        <a href="#">¿No tienes Cuenta? Registrate</a>
-                    </div>
-                </div>
-                <div class="inferior">
-                    <a href="#">Volver</a>
                 </div>
             </div>
         </div>
@@ -151,13 +240,13 @@
   <div class="row">
     <div class="col-12 col-md">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24" focusable="false"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-      <small class="d-block mb-3 text-muted">&copy; 2021-2022 Grupo#6 </small>
+      <small class="d-block mb-3 text-muted">&copy; 2021-2022 Grupo#8 </small>
     </div>
     <div class="col-6 col-md">
       <h5>Integrantes</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="text-muted" href="#">Integrante #1</a></li>
-        <li><a class="text-muted" href="#">Integrante #2</a></li>
+        <li><a class="text-muted" href="#">Beronica Arrega</a></li>
+        <li><a class="text-muted" href="#">Gustavo Adolfo Hernandez</a></li>
         
       </ul>
     </div>
@@ -165,10 +254,9 @@
     
   </div>
 </footer>
-
         
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+      
     </body>
 </html>
    

@@ -138,7 +138,7 @@ import javax.swing.table.DefaultTableModel;
         return retorno;
     }
     
-    //Funcion Modificar
+     //Funcion Modificar
     @Override
     public int modificar(){
     int retorno=0;
@@ -194,7 +194,9 @@ import javax.swing.table.DefaultTableModel;
         
         return retorno;
     }
-
+    
+    
+    
     }
     
     
